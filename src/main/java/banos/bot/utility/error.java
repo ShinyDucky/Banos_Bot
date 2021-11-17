@@ -13,6 +13,6 @@ public class error {
         embed.setTitle("MISSING ARGUMENTS").setColor(author.getColor()).setDescription(currnetCmd.getHelp())
                 .setFooter("ERROR");
 
-        channel.sendMessage(embed.build()).queue();
+        channel.sendMessageEmbeds(embed.build()).queue();
     }
 }

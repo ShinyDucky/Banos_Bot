@@ -17,6 +17,7 @@ public class CommandManager {
 
     public CommandManager() {
         addCommand(new BanCmd());
+        addCommand(new InfoCMD());
     }
 
     private void addCommand(ICommand cmd) {
@@ -27,10 +28,6 @@ public class CommandManager {
         }
 
         commands.add(cmd);
-    }
-
-    public List<ICommand> getCommands() {
-        return commands;
     }
 
     @Nullable

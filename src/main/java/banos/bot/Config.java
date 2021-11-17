@@ -8,11 +8,16 @@ import java.util.Scanner;
 
 public class Config {
     public static String getToken() throws FileNotFoundException {
-        File tokenFile = new File("token.txt");
+        File tokenFile = new File("./token.txt");
 
         Scanner reader = new Scanner(tokenFile);
-        String token = reader.next();
-        return token;
+        return reader.next();
+    }
+
+    public static String getPrefix() throws FileNotFoundException {
+        File prefixFile = new File("prefix.txt");
+
+        return readFiles.getFirstLineFromFile(prefixFile);
     }
 
     public static String getOwnerId() throws FileNotFoundException {
@@ -21,9 +26,9 @@ public class Config {
         return readFiles.getFirstLineFromFile(ownerIdFile);
     }
 
-    public static String getPrefix() throws FileNotFoundException {
-        File prefixFile = new File("prefix.txt");
+    public static float getVersion() throws FileNotFoundException {
+        File versionFile = new File("version.txt");
 
-        return readFiles.getFirstLineFromFile(prefixFile);
+        return Float.parseFloat(readFiles.getFirstLineFromFile(versionFile));
     }
 }

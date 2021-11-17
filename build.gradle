@@ -30,3 +30,16 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+jar {
+    manifest {
+        attributes "Bot": "banos.bot"
+    }
+
+    from {
+        configurations {
+            'compile'
+        }
+    }
+}
+

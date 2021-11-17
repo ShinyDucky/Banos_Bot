@@ -9,13 +9,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class readFiles {
-    private static Logger LOGGER = LoggerFactory.getLogger(error.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(error.class);
 
-    public static String getFirstLineFromFile(@NotNull File file) throws FileNotFoundException {
+    public static String getFirstLineFromFile(@NotNull File file) {
         try {
             Scanner reader = new Scanner(file);
-            String result = reader.next();
-            return result;
+            return reader.next();
         } catch (FileNotFoundException e) {
             LOGGER.error("{} IS NOT FOUND. PLEASE CREATE OR RENAME A FILE CALLED {}", file.getName(), file.getName());
             return null;
