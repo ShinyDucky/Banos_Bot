@@ -6,7 +6,6 @@ group 'banos.bot'
 version '1.0-SNAPSHOT'
 
 repositories {
-    jcenter()
     mavenCentral()
     maven {
         name 'm2-dv8tion'
@@ -31,24 +30,4 @@ test {
     useJUnitPlatform()
 }
 
-task clean {
-    delete {
-        dir 'build'
-    }
-}
-
-task jar {
-    from {
-        configurations {
-            'compile'
-        }
-    }
-}
-
-task stage {
-    from {
-        configurations {
-            'compile'
-        }
-    }
-}
+task stage(dependsOn: [jar])
