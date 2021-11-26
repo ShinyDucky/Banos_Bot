@@ -1,0 +1,1 @@
+web: java -jar ./build/libs/Banos_bot-1.0-SNAPSHOT.jar
