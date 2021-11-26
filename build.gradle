@@ -31,11 +31,13 @@ test {
     useJUnitPlatform()
 }
 
-jar {
-    manifest {
-        attributes "Bot": "banos.bot"
+task clean {
+    delete {
+        dir 'build'
     }
+}
 
+task jar {
     from {
         configurations {
             'compile'
@@ -43,3 +45,10 @@ jar {
     }
 }
 
+task stage {
+    from {
+        configurations {
+            'compile'
+        }
+    }
+}
