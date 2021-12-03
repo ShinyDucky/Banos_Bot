@@ -5,6 +5,7 @@ import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.DisconnectEvent;
 import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.ReconnectedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +16,7 @@ import javax.annotation.Nonnull;
 import java.io.FileNotFoundException;
 
 public class listener extends ListenerAdapter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(bot.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
     private final CommandManager manager = new CommandManager();
 
     protected String myId = "743218702022869083";
@@ -37,6 +38,17 @@ public class listener extends ListenerAdapter {
         Notify.create()
                 .title("DISCONNECTED")
                 .text(event.getJDA().getSelfUser().getAsTag() + " has disconnected")
+                .darkStyle()
+                .showWarning();
+    }
+
+    @Override
+    public void onReconnected(@NotNull ReconnectedEvent event) {
+        super.onReconnected(event);
+        LOGGER.warn("{} is reconnected", event.getJDA().getSelfUser().getAsTag());
+        Notify.create()
+                .title("RECONNECTED")
+                .text(event.getJDA().getSelfUser().getAsTag() + " has reconnected")
                 .darkStyle()
                 .showWarning();
     }

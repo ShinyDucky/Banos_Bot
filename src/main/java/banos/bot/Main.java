@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import javax.security.auth.login.LoginException;
 import java.io.FileNotFoundException;
 
-public class bot {
+public class Main {
     public static void main(String[] args) throws LoginException, FileNotFoundException {
         JDABuilder builder = JDABuilder.createDefault(
                         Config.getToken(),

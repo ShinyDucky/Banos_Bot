@@ -9,7 +9,6 @@ import net.dv8tion.jda.api.entities.User;
 import banos.bot.Config;
 import banos.bot.command.CommandContext;
 import banos.bot.command.ICommand;
-import banos.bot.utility.DiscordLogger;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -60,8 +59,6 @@ public class BanCmd implements ICommand {
                 (__) -> channel.sendMessage("User is banned").queue(),
                 (error) -> channel.sendMessageFormat("Could not ban ", error.getMessage()).queue()
         );
-
-        DiscordLogger.sendLogMessage(ctx.getEvent(), ctx.getGuild(), new BanCmd(), target);
     }
 
     @Override
