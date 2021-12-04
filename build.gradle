@@ -1,12 +1,19 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version "7.1.0"
+    id 'application'
 }
 
 group 'banos.bot'
-version '1.0-SNAPSHOT'
+version '1.0'
+
+application {
+    mainClass = 'banos.bot.Main'
+}
 
 repositories {
     mavenCentral()
+    jcenter()
     maven {
         name 'm2-dv8tion'
         url 'https://m2.dv8tion.net/releases'
@@ -29,5 +36,3 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
-task stage(dependsOn: [jar])
