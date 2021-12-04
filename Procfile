@@ -1,1 +1,1 @@
-worker: java -jar out/main.jar
+worker: java -jar out/main.jar --app banos
