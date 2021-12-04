@@ -36,3 +36,30 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task runApp(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+
+    mainClass = 'banos.bot.Main'
+
+    debugOptions {
+        enabled = true
+        port = 8080
+        server = true
+        suspend = false
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'banos.bot.Main'
+    }
+}
+
+task runExecutableJar(type: JavaExec) {
+    classpath = files(tasks.jar)
+}
+
+task stage(dependsOn: [jar, runApp]) {
+    runApp
+}
