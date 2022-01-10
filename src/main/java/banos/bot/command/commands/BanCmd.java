@@ -6,15 +6,19 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
-import banos.bot.Config;
 import banos.bot.command.CommandContext;
 import banos.bot.command.ICommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.function.ObjLongConsumer;
 
 public class BanCmd implements ICommand {
+    private final Logger LOGGER = LoggerFactory.getLogger(BanCmd.class);
+
     @Override
     public void handle(CommandContext ctx) throws FileNotFoundException {
         TextChannel channel = ctx.getChannel();
@@ -52,7 +56,6 @@ public class BanCmd implements ICommand {
         EmbedBuilder builder = new EmbedBuilder().setImage("https://media.discordapp.net/attachments/761236786936414291/909985727310364672/Banos.png?width=439&height=554")
                         .setTitle("You Have Been Banned BY... BANOS")
                                         .setColor(Color.RED);
-
         target.getUser().openPrivateChannel().complete().sendMessageEmbeds(builder.build()).queue();
 
         ctx.getGuild().ban(target, 1, reason).reason(reason).queue(
@@ -64,11 +67,5 @@ public class BanCmd implements ICommand {
     @Override
     public String getName() {
         return "ban";
-    }
-
-    @Override
-    public String getHelp() throws FileNotFoundException {
-        return "Bans a user\n" +
-                "Usage: "+ Config.getPrefix() + "ban @<user> <reason>";
     }
 }

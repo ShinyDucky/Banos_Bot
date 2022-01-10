@@ -25,9 +25,4 @@ public class InfoCMD implements ICommand {
     public String getName() {
         return "info";
     }
-
-    @Override
-    public String getHelp() throws FileNotFoundException {
-        return null;
-    }
 }

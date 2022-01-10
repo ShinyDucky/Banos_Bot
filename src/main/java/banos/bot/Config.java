@@ -4,6 +4,7 @@ import banos.bot.utility.readFiles;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Config {
@@ -20,15 +21,9 @@ public class Config {
         return readFiles.getFirstLineFromFile(prefixFile);
     }
 
-    public static String getOwnerId() throws FileNotFoundException {
-        File ownerIdFile = new File("owner_id.txt");
-
-        return readFiles.getFirstLineFromFile(ownerIdFile);
-    }
-
-    public static float getVersion() throws FileNotFoundException {
+    public static float getVersion() {
         File versionFile = new File("version.txt");
 
-        return Float.parseFloat(readFiles.getFirstLineFromFile(versionFile));
+        return Float.parseFloat(Objects.requireNonNull(readFiles.getFirstLineFromFile(versionFile)));
     }
 }

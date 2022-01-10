@@ -1,7 +1,7 @@
 package banos.bot;
 
-import dorkbox.notify.Notify;
 import me.duncte123.botcommons.BotCommons;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.DisconnectEvent;
 import net.dv8tion.jda.api.events.ReadyEvent;
@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
+import java.awt.*;
 import java.io.FileNotFoundException;
 
 public class listener extends ListenerAdapter {
@@ -24,33 +25,6 @@ public class listener extends ListenerAdapter {
     @Override
     public void onReady(@Nonnull ReadyEvent event) {
         LOGGER.info("{} is ready", event.getJDA().getSelfUser().getAsTag());
-        Notify.create()
-                .title("READY")
-                .text(event.getJDA().getSelfUser().getAsTag() + " IS READY")
-                .darkStyle()
-                .showInformation();
-    }
-
-    @Override
-    public void onDisconnect(@NotNull DisconnectEvent event) {
-        super.onDisconnect(event);
-        LOGGER.warn("{} is disconnected", event.getJDA().getSelfUser().getAsTag());
-        Notify.create()
-                .title("DISCONNECTED")
-                .text(event.getJDA().getSelfUser().getAsTag() + " has disconnected")
-                .darkStyle()
-                .showWarning();
-    }
-
-    @Override
-    public void onReconnected(@NotNull ReconnectedEvent event) {
-        super.onReconnected(event);
-        LOGGER.warn("{} is reconnected", event.getJDA().getSelfUser().getAsTag());
-        Notify.create()
-                .title("RECONNECTED")
-                .text(event.getJDA().getSelfUser().getAsTag() + " has reconnected")
-                .darkStyle()
-                .showWarning();
     }
 
     @Override
@@ -76,6 +50,14 @@ public class listener extends ListenerAdapter {
 
             if (raw.startsWith(prefix)) {
                 manager.handle(event);
+            } else if (raw.equalsIgnoreCase("i want banos")) {
+                EmbedBuilder builder = new EmbedBuilder().setImage("https://media.discordapp.net/attachments/761236786936414291/909985727310364672/Banos.png?width=439&height=554")
+                        .setTitle("You Have Been Banned BY... BANOS")
+                        .setColor(Color.RED);
+
+                event.getAuthor().openPrivateChannel().complete().sendMessageEmbeds(builder.build()).queue();
+            } else if (raw.equalsIgnoreCase("I hate banos")) {
+                event.getAuthor().openPrivateChannel().complete().sendMessage("Fuck You Bitch").queue();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

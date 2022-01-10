@@ -3,6 +3,7 @@ package banos.bot;
 import banos.bot.command.CommandContext;
 import banos.bot.command.ICommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import banos.bot.command.commands.*;
 
@@ -18,6 +19,7 @@ public class CommandManager {
     public CommandManager() {
         addCommand(new BanCmd());
         addCommand(new InfoCMD());
+        addCommand(new UnbanCmd());
     }
 
     private void addCommand(ICommand cmd) {
@@ -30,6 +32,10 @@ public class CommandManager {
         commands.add(cmd);
     }
 
+    /**
+     * @param search Search
+     * @return command found
+     */
     @Nullable
     public ICommand getCommand(String search) {
         String searchLower = search.toLowerCase();
