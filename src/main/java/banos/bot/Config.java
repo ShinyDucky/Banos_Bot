@@ -8,22 +8,19 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Config {
+    protected static String token = "OTA4NDczOTkxOTA2MzQ0OTYw.YY2QVg.6UbQGf9-5ZwFYWkWnRpQKQZn-QA";
+    private static String prefix = "!";
+    private static float version = 1.0f;
+    
     public static String getToken() throws FileNotFoundException {
-        File tokenFile = new File("./token.txt");
-
-        Scanner reader = new Scanner(tokenFile);
-        return reader.next();
+        return token;
     }
 
     public static String getPrefix() throws FileNotFoundException {
-        File prefixFile = new File("prefix.txt");
-
-        return readFiles.getFirstLineFromFile(prefixFile);
+        return prefix;
     }
 
     public static float getVersion() {
-        File versionFile = new File("version.txt");
-
-        return Float.parseFloat(Objects.requireNonNull(readFiles.getFirstLineFromFile(versionFile)));
+        return version;
     }
 }
