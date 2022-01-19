@@ -33,7 +33,7 @@ GatewayIntent.GUILD_VOICE_STATES,
                         GatewayIntent.DIRECT_MESSAGE_REACTIONS,
                         GatewayIntent.DIRECT_MESSAGE_TYPING
                 )
-                .addEventListeners(new listener(), new AutoMod())
+                .addEventListeners(new listener())
                 .setActivity(Activity.listening("Leave Me Alone"))
                 .setStatus(OnlineStatus.ONLINE);
         builder.build();
