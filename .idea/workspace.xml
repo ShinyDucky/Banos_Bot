@@ -134,7 +134,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/gs-spring-boot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gs-spring-boot" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -160,7 +160,7 @@
       <recent name="banos.bot" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Banos_Bot [stage]">
+  <component name="RunManager" selected="Gradle.Banos_Bot [shadowJar]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="banos.bot.Main" />
       <module name="Banos_Bot.main" />
@@ -246,9 +246,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Banos_Bot [shadowJar]" />
         <item itemvalue="Gradle.Banos_Bot [stage]" />
         <item itemvalue="Gradle.Banos_Bot [wrapper]" />
-        <item itemvalue="Gradle.Banos_Bot [shadowJar]" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.test" />
       </list>
