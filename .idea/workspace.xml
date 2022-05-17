@@ -5,10 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45151b75-8c5c-4ef6-a023-69a5ab7a9089" name="Changes" comment="This is the final update hopefully">
+      <change afterPath="$PROJECT_DIR$/employees.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/muted.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/banos/bot/command/commands/KickCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Banos_Bot.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/banos/bot/AutoMod.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/banos/bot/CommandManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/banos/bot/CommandManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/banos/bot/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/banos/bot/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/banos/bot/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/banos/bot/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/banos/bot/command/ICommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/banos/bot/command/ICommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/banos/bot/listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/banos/bot/listener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/Banos_Bot-1.1.0-SNAPSHOT.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/Banos_Bot-1.1.0-SNAPSHOT-all.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/CommandManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/CommandManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/command/ICommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/command/ICommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/BanCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/BanCmd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/UnbanCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/UnbanCmd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/listener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/utility/error.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/utility/error.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/command/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/command/ICommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/listener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,14 +126,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/utility/error.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/command/commands/BanCmd.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/command/ICommand.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/Config.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/listener.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/CommandManager.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/CommandManager.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/Config.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/command/ICommand.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/command/commands/BanCmd.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/listener.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/banos/bot/utility/error.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -114,26 +146,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="sqlite&#10;postgresql" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gs-spring-boot" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nlowi/Desktop/Banos_Bot&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;discord-project&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nlowi\Documents\Java PRojects\Banos Bot\src\main\java\banos\bot\images" />
@@ -141,18 +161,18 @@
       <recent name="C:\Users\nlowi\Documents\Java PRojects\Banos Bot\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nlowi\Desktop\Banos_Bot" />
       <recent name="C:\Users\nlowi\Documents\Java_PRojects\Banos_Bot" />
       <recent name="C:\Users\nlowi\Documents\Java_PRojects\Banos_Bot\src\main\resources\static\css" />
       <recent name="C:\Users\nlowi\Documents\Java_PRojects\Banos_Bot\src\main\resources\static" />
       <recent name="C:\Users\nlowi\Documents\Java_PRojects\Banos_Bot\src\main\resources\templates" />
-      <recent name="C:\Users\nlowi\AppData\Roaming\JetBrains\IdeaIC2021.2\extensions" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="banos.bot.utility" />
       <recent name="banos.bot" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Banos_Bot [shadowJar]">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="banos.bot.Main" />
       <module name="Banos_Bot.main" />
@@ -238,10 +258,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.Banos_Bot [shadowJar]" />
         <item itemvalue="Gradle.Banos_Bot [stage]" />
         <item itemvalue="Gradle.Banos_Bot [wrapper]" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
@@ -289,6 +309,13 @@
       <workItem from="1641782023530" duration="407000" />
       <workItem from="1649561230593" duration="78000" />
       <workItem from="1649562635624" duration="67000" />
+      <workItem from="1651799998008" duration="14445000" />
+      <workItem from="1652145514734" duration="895000" />
+      <workItem from="1652146790340" duration="21000" />
+      <workItem from="1652414027445" duration="202000" />
+      <workItem from="1652658726097" duration="509000" />
+      <workItem from="1652659289627" duration="1015000" />
+      <workItem from="1652753774499" duration="619000" />
     </task>
     <task id="LOCAL-00001" summary="STUFF">
       <created>1637122246925</created>
@@ -390,6 +417,16 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt" />
     <MESSAGE value="This is the final update hopefully" />
     <option name="LAST_COMMIT_MESSAGE" value="This is the final update hopefully" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.UnsupportedOperationException" package="java.lang" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Banos_Bot$Banos_Bot__shadowJar_.ic" NAME="Banos_Bot [shadowJar] Coverage Results" MODIFIED="1638573041764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

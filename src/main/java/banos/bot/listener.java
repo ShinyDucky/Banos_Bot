@@ -2,19 +2,24 @@ package banos.bot;
 
 import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.DisconnectEvent;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.ReconnectedEvent;
+import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class listener extends ListenerAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
@@ -61,6 +66,21 @@ public class listener extends ListenerAdapter {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            return;
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void onGuildJoin(@NotNull GuildJoinEvent event) {
+        super.onGuildJoin(event);
+
+        Guild guild = event.getJDA().getGuildById(974312232911528017l);
+
+        if (event.getGuild() == guild) {
+            event.getGuild().ban((User) event.getJDA().getSelfUser(), 999999999, "You No can Have Banos").queue();
         }
     }
 }

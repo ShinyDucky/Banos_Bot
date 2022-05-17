@@ -6,8 +6,10 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import banos.bot.command.commands.*;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +22,7 @@ public class CommandManager {
         addCommand(new BanCmd());
         addCommand(new InfoCMD());
         addCommand(new UnbanCmd());
+        addCommand(new KickCmd());
     }
 
     private void addCommand(ICommand cmd) {
@@ -49,7 +52,7 @@ public class CommandManager {
         return null;
     }
 
-    void handle(GuildMessageReceivedEvent event) throws FileNotFoundException {
+    void handle(GuildMessageReceivedEvent event) throws IOException, ParseException {
         String[] split = event.getMessage().getContentRaw()
                 .replaceFirst("(?i)" + Pattern.quote(Config.getPrefix()), "")
                 .split("\\s+");
