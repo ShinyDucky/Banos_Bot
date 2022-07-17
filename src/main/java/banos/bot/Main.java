@@ -35,12 +35,13 @@ public class Main extends ListenerAdapter {
                         GatewayIntent.GUILD_PRESENCES,
                         GatewayIntent.GUILD_BANS,
                         GatewayIntent.GUILD_VOICE_STATES,
+                        GatewayIntent.GUILD_EMOJIS_AND_STICKERS,
                         GatewayIntent.DIRECT_MESSAGES,
                         GatewayIntent.DIRECT_MESSAGE_REACTIONS,
                         GatewayIntent.DIRECT_MESSAGE_TYPING
                 )
                 .addEventListeners(new listener())
-                .setActivity(Activity.watching("you..."))
+                .setActivity(Activity.watching("you Wazowski. Always watching. Always."))
                 .setStatus(OnlineStatus.ONLINE).build();
 
         CommandListUpdateAction commands = jda.updateCommands();
