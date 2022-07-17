@@ -54,6 +54,6 @@ build.mustRunAfter clean
 
 jar {
     manifest{
-        attributes 'Class-Path': './build/libs/Banos_Bot-1.1.0-SNAPSHOT-all', 'Main-Class': 'banos.bot.Main'
+        attributes 'Class-Path': './libs/Banos_Bot-1.1.0-SNAPSHOT-all', 'Main-Class': 'banos.bot.Main'
     }
 }

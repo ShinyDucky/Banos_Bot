@@ -1,0 +1,346 @@
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'java'\r\n    id 'com.github.johnrengelman.shadow' version \"7.1.0\"\r\n    id 'application'\r\n}\r\n\r\ngroup 'banos.bot'\r\nversion '1.1.0-SNAPSHOT'\r\n\r\next {\r\n    javaMainClass = \"banos.bot.Main\"\r\n}\r\n\r\napplication {\r\n    mainClass = 'banos.bot.Main'\r\n}\r\n\r\nrepositories {\r\n    mavenCentral()\r\n    jcenter()\r\n    maven {\r\n        url = uri(\"https://m2.duncte123.dev/snapshots\")\r\n    }\r\n    maven {\r\n        url = uri(\"https://m2.dv8tion.net/releases\")\r\n    }\r\n    maven {\r\n        url = uri(\"https://m2.duncte123.dev/releases\")\r\n    }\r\n    maven {\r\n        url = uri(\"https://duncte123.jfrog.io/artifactory/maven\")\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation group: 'net.dv8tion', name: 'JDA', version: '5.0.0-alpha.14'\r\n    implementation group: 'me.duncte123', name: 'botCommons', version: 'beta_3.0.3'\r\n    implementation group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.1'\r\n    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.3.0-alpha14'\r\n    implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'\r\n    implementation group: 'org.menudocs', name: 'paste-client-java', version: '1.0.16'\r\n    implementation group: 'club.minnced', name: 'discord-webhooks', version: '0.8.0'\r\n    implementation group: 'com.sedmelluq', name: 'lavaplayer', version: '1.3.50'\r\n    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'\r\n    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'\r\n    implementation 'com.googlecode.json-simple:json-simple:1.1.1'\r\n    implementation 'me.duncte123:reliqua:2.6.5'\r\n}\r\n\r\ntest {\r\n    useJUnitPlatform()\r\n}\r\n\r\ntask stage(dependsOn: ['build','shadowJar', 'clean', 'test'])\r\nbuild.mustRunAfter clean\r\nbuild.mustRunAfter test\r\n\r\njar {\r\n    manifest{\r\n        attributes 'Class-Path': '/libs/Banos_Bot-1.1.0-SNAPSHOT-all', 'Main-Class': 'banos.bot.Main'\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision 435b69cce645ae7a1c08ed73d43cb3b630bd2d1b)
++++ b/build.gradle	(date 1658089593518)
+@@ -38,8 +38,6 @@
+     implementation group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.1'
+     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.3.0-alpha14'
+     implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'
+-    implementation group: 'org.menudocs', name: 'paste-client-java', version: '1.0.16'
+-    implementation group: 'club.minnced', name: 'discord-webhooks', version: '0.8.0'
+     implementation group: 'com.sedmelluq', name: 'lavaplayer', version: '1.3.50'
+     implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
+     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'
+@@ -51,12 +49,11 @@
+     useJUnitPlatform()
+ }
+ 
+-task stage(dependsOn: ['build','shadowJar', 'clean', 'test'])
++task stage(dependsOn: ['build','shadowJar', 'clean'])
+ build.mustRunAfter clean
+-build.mustRunAfter test
+ 
+ jar {
+     manifest{
+-        attributes 'Class-Path': '/libs/Banos_Bot-1.1.0-SNAPSHOT-all', 'Main-Class': 'banos.bot.Main'
++        attributes 'Class-Path': './build/libs/Banos_Bot-1.1.0-SNAPSHOT-all', 'Main-Class': 'banos.bot.Main'
+     }
+ }
+\ No newline at end of file
+Index: Procfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>worker: java -jar ./build/libs/Banos_Bot-1.1.0-SNAPSHOT-all.jar.
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Procfile b/Procfile
+--- a/Procfile	(revision 435b69cce645ae7a1c08ed73d43cb3b630bd2d1b)
++++ b/Procfile	(date 1658089729338)
+@@ -1,1 +1,1 @@
+-worker: java -jar ./build/libs/Banos_Bot-1.1.0-SNAPSHOT-all.jar.
+\ No newline at end of file
++worker: java -jar ./build/libs/Banos_Bot-1.1.0-SNAPSHOT-all.jar
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"45151b75-8c5c-4ef6-a023-69a5ab7a9089\" name=\"Changes\" comment=\"Changed Status\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Procfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Procfile\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"build\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"build setup\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"distribution\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"other\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"Banos_Bot\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"shadow\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"spring-beans.schema\" />\r\n        <option value=\"HTML File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Rebase.Settings\">\r\n    <option name=\"NEW_BASE\" value=\"master\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PUSH_AUTO_UPDATE\" value=\"true\" />\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.duncte123/botCommons/1.0.73/35f923e67ae4989a9724bce9dfb9e74bd6ecff53/botCommons-1.0.73-sources.jar!/me/duncte123/botcommons/commands/ICommandContext.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/build.gradle\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/banos/bot/CommandManager.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/banos/bot/Config.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/banos/bot/Main.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/banos/bot/command/ICommand.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/banos/bot/command/commands/BanCmd.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/banos/bot/listener.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/banos/bot/utility/error.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"20n4lSk2r928ivwvovcHEQduAvK\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/nlowi/Desktop/Banos_Bot-master&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\nlowi\\Documents\\Java PRojects\\Banos Bot\\src\\main\\java\\banos\\bot\\images\" />\r\n      <recent name=\"C:\\Users\\nlowi\\Documents\\Java PRojects\\Banos Bot\\src\\main\\java\\banos\\bot\" />\r\n      <recent name=\"C:\\Users\\nlowi\\Documents\\Java PRojects\\Banos Bot\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\nlowi\\Desktop\\Banos_Bot\" />\r\n      <recent name=\"C:\\Users\\nlowi\\Documents\\Java_PRojects\\Banos_Bot\" />\r\n      <recent name=\"C:\\Users\\nlowi\\Documents\\Java_PRojects\\Banos_Bot\\src\\main\\resources\\static\\css\" />\r\n      <recent name=\"C:\\Users\\nlowi\\Documents\\Java_PRojects\\Banos_Bot\\src\\main\\resources\\static\" />\r\n      <recent name=\"C:\\Users\\nlowi\\Documents\\Java_PRojects\\Banos_Bot\\src\\main\\resources\\templates\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"banos.bot.utility\" />\r\n      <recent name=\"banos.bot\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Gradle.Banos_Bot [stage]\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"banos.bot.Main\" />\r\n      <module name=\"Banos_Bot.main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"banos.bot.login.Password.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Banos_Bot [shadowJar]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"shadowJar\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Banos_Bot [stage]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"stage\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Banos_Bot [wrapper]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"wrapper\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"Banos_Bot-master [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"build\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Gradle.Banos_Bot-master [build]\" />\r\n      <item itemvalue=\"Gradle.Banos_Bot [shadowJar]\" />\r\n      <item itemvalue=\"Gradle.Banos_Bot [stage]\" />\r\n      <item itemvalue=\"Gradle.Banos_Bot [wrapper]\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.Banos_Bot [stage]\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Gradle.Banos_Bot-master [build]\" />\r\n        <item itemvalue=\"Gradle.Banos_Bot [wrapper]\" />\r\n        <item itemvalue=\"Gradle.Banos_Bot [shadowJar]\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"45151b75-8c5c-4ef6-a023-69a5ab7a9089\" name=\"Changes\" comment=\"\" />\r\n      <created>1636667171268</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1636667171268</updated>\r\n      <workItem from=\"1637888895329\" duration=\"2853000\" />\r\n      <workItem from=\"1637905273215\" duration=\"304000\" />\r\n      <workItem from=\"1638488366718\" duration=\"1396000\" />\r\n      <workItem from=\"1638502539222\" duration=\"1910000\" />\r\n      <workItem from=\"1638504544302\" duration=\"79000\" />\r\n      <workItem from=\"1638555364733\" duration=\"124000\" />\r\n      <workItem from=\"1638555678915\" duration=\"94000\" />\r\n      <workItem from=\"1638556038578\" duration=\"7618000\" />\r\n      <workItem from=\"1638807231319\" duration=\"35000\" />\r\n      <workItem from=\"1638807295321\" duration=\"1115000\" />\r\n      <workItem from=\"1639190476861\" duration=\"5284000\" />\r\n      <workItem from=\"1639368954338\" duration=\"7473000\" />\r\n      <workItem from=\"1639542705768\" duration=\"1498000\" />\r\n      <workItem from=\"1639608811968\" duration=\"53000\" />\r\n      <workItem from=\"1639608907501\" duration=\"5372000\" />\r\n      <workItem from=\"1639627110722\" duration=\"7344000\" />\r\n      <workItem from=\"1639713155618\" duration=\"247000\" />\r\n      <workItem from=\"1639715563728\" duration=\"4508000\" />\r\n      <workItem from=\"1639857342577\" duration=\"7794000\" />\r\n      <workItem from=\"1640044469682\" duration=\"2565000\" />\r\n      <workItem from=\"1640127134110\" duration=\"4853000\" />\r\n      <workItem from=\"1640189229978\" duration=\"2761000\" />\r\n      <workItem from=\"1640213104606\" duration=\"1507000\" />\r\n      <workItem from=\"1640628095529\" duration=\"2210000\" />\r\n      <workItem from=\"1640665255912\" duration=\"2735000\" />\r\n      <workItem from=\"1640732767598\" duration=\"7425000\" />\r\n      <workItem from=\"1641018169200\" duration=\"3603000\" />\r\n      <workItem from=\"1641093007959\" duration=\"2476000\" />\r\n      <workItem from=\"1641420228357\" duration=\"7329000\" />\r\n      <workItem from=\"1641428913819\" duration=\"1745000\" />\r\n      <workItem from=\"1641776941191\" duration=\"1215000\" />\r\n      <workItem from=\"1641778543591\" duration=\"3163000\" />\r\n      <workItem from=\"1641782023530\" duration=\"407000\" />\r\n      <workItem from=\"1649561230593\" duration=\"78000\" />\r\n      <workItem from=\"1649562635624\" duration=\"67000\" />\r\n      <workItem from=\"1651799998008\" duration=\"14445000\" />\r\n      <workItem from=\"1652145514734\" duration=\"895000\" />\r\n      <workItem from=\"1652146790340\" duration=\"21000\" />\r\n      <workItem from=\"1652414027445\" duration=\"202000\" />\r\n      <workItem from=\"1652658726097\" duration=\"509000\" />\r\n      <workItem from=\"1652659289627\" duration=\"1015000\" />\r\n      <workItem from=\"1652753774499\" duration=\"619000\" />\r\n      <workItem from=\"1657252661736\" duration=\"1057000\" />\r\n      <workItem from=\"1657253862365\" duration=\"246000\" />\r\n      <workItem from=\"1657254138262\" duration=\"116000\" />\r\n      <workItem from=\"1657299139089\" duration=\"1339000\" />\r\n      <workItem from=\"1658005027175\" duration=\"3957000\" />\r\n      <workItem from=\"1658023422970\" duration=\"2237000\" />\r\n      <workItem from=\"1658073492659\" duration=\"4173000\" />\r\n      <workItem from=\"1658077881956\" duration=\"2832000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"STUFF\">\r\n      <created>1637122246925</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637122246925</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\">\r\n      <created>1637890407736</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637890407736</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\">\r\n      <created>1637890695468</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637890695468</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\">\r\n      <created>1637890954592</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637890954592</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\">\r\n      <created>1637905320070</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637905320071</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\">\r\n      <created>1638573140734</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1638573140735</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\">\r\n      <created>1638588703446</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1638588703446</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\">\r\n      <created>1638590785486</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1638590785486</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"This is the final update hopefully\">\r\n      <created>1641778071509</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1641778071509</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"This is the final update hopefully\">\r\n      <created>1641780026774</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1641780026774</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"This is the final update hopefully\">\r\n      <created>1649561298601</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649561298601</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"This is the final update hopefully\">\r\n      <created>1658076639666</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658076639666</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"This is the final update hopefully\">\r\n      <created>1658076808808</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658076808808</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"This is the final update hopefully\">\r\n      <created>1658077500359</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658077500359</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"This is the final update hopefully\">\r\n      <created>1658077541396</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658077541396</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"Boo\">\r\n      <created>1658077918567</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658077918567</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Boo\">\r\n      <created>1658077989759</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658077989759</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Boo\">\r\n      <created>1658078747308</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658078747308</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Changed Status\">\r\n      <created>1658081290578</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1658081290578</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"20\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"STUFF\" />\r\n    <MESSAGE value=\"Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;token.txt\" />\r\n    <MESSAGE value=\"This is the final update hopefully\" />\r\n    <MESSAGE value=\"Boo\" />\r\n    <MESSAGE value=\"Changed Status\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Changed Status\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.UnsupportedOperationException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"5\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/Banos_Bot$Banos_Bot__shadowJar_.ic\" NAME=\"Banos_Bot [shadowJar] Coverage Results\" MODIFIED=\"1638573041764\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 435b69cce645ae7a1c08ed73d43cb3b630bd2d1b)
++++ b/.idea/workspace.xml	(date 1658089633855)
+@@ -5,8 +5,28 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="45151b75-8c5c-4ef6-a023-69a5ab7a9089" name="Changes" comment="Changed Status">
++      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/banos/bot/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/banos/bot/Main.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/distributions/Banos_Bot-1.1.0-SNAPSHOT.tar" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/Banos_Bot-1.1.0-SNAPSHOT.tar" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/distributions/Banos_Bot-1.1.0-SNAPSHOT.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/Banos_Bot-1.1.0-SNAPSHOT.zip" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/libs/Banos_Bot-1.1.0-SNAPSHOT-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Banos_Bot-1.1.0-SNAPSHOT-all.jar" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/libs/Banos_Bot-1.1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Banos_Bot-1.1.0-SNAPSHOT.jar" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/scripts/Banos_Bot" beforeDir="false" afterPath="$PROJECT_DIR$/build/scripts/Banos_Bot" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/scripts/Banos_Bot.bat" beforeDir="false" afterPath="$PROJECT_DIR$/build/scripts/Banos_Bot.bat" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/tmp/shadowJar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/shadowJar/MANIFEST.MF" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -72,6 +92,12 @@
+                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+                 <item name="shadow" type="c8890929:TasksNode$1" />
+               </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Banos_Bot" type="f1a62948:ProjectNode" />
++                <item name="Tasks" type="e4a08cd1:TasksNode" />
++                <item name="verification" type="c8890929:TasksNode$1" />
++              </path>
+             </expand>
+             <select />
+           </tree_state>
+@@ -161,21 +187,29 @@
+       <recent name="banos.bot" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Gradle.Banos_Bot [stage]">
+-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+-      <option name="MAIN_CLASS_NAME" value="banos.bot.Main" />
+-      <module name="Banos_Bot.main" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="banos.bot.login.Password.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
++  <component name="RunManager" selected="Gradle.Banos_Bot-master [stage]">
++    <configuration name="Banos_Bot-master [assembleDist]" type="GradleRunConfiguration" factoryName="Gradle">
++      <ExternalSystemSettings>
++        <option name="executionName" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="externalSystemIdString" value="GRADLE" />
++        <option name="scriptParameters" />
++        <option name="taskDescriptions">
++          <list />
++        </option>
++        <option name="taskNames">
++          <list>
++            <option value="assembleDist" />
++          </list>
++        </option>
++        <option name="vmOptions" />
++      </ExternalSystemSettings>
++      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
++      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
++      <DebugAllEnabled>false</DebugAllEnabled>
++      <method v="2" />
+     </configuration>
+-    <configuration name="Banos_Bot [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
++    <configuration name="Banos_Bot-master [init]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+       <ExternalSystemSettings>
+         <option name="executionName" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+@@ -186,7 +220,7 @@
+         </option>
+         <option name="taskNames">
+           <list>
+-            <option value="shadowJar" />
++            <option value="init" />
+           </list>
+         </option>
+         <option name="vmOptions" />
+@@ -196,7 +230,7 @@
+       <DebugAllEnabled>false</DebugAllEnabled>
+       <method v="2" />
+     </configuration>
+-    <configuration name="Banos_Bot [stage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
++    <configuration name="Banos_Bot-master [runShadow]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+       <ExternalSystemSettings>
+         <option name="executionName" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+@@ -207,7 +241,7 @@
+         </option>
+         <option name="taskNames">
+           <list>
+-            <option value="stage" />
++            <option value="runShadow" />
+           </list>
+         </option>
+         <option name="vmOptions" />
+@@ -217,7 +251,7 @@
+       <DebugAllEnabled>false</DebugAllEnabled>
+       <method v="2" />
+     </configuration>
+-    <configuration name="Banos_Bot [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
++    <configuration name="Banos_Bot-master [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+       <ExternalSystemSettings>
+         <option name="executionName" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+@@ -228,7 +262,7 @@
+         </option>
+         <option name="taskNames">
+           <list>
+-            <option value="wrapper" />
++            <option value="run" />
+           </list>
+         </option>
+         <option name="vmOptions" />
+@@ -238,7 +272,7 @@
+       <DebugAllEnabled>false</DebugAllEnabled>
+       <method v="2" />
+     </configuration>
+-    <configuration name="Banos_Bot-master [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
++    <configuration name="Banos_Bot-master [stage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+       <ExternalSystemSettings>
+         <option name="executionName" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+@@ -249,7 +283,7 @@
+         </option>
+         <option name="taskNames">
+           <list>
+-            <option value="build" />
++            <option value="stage" />
+           </list>
+         </option>
+         <option name="vmOptions" />
+@@ -259,20 +293,42 @@
+       <DebugAllEnabled>false</DebugAllEnabled>
+       <method v="2" />
+     </configuration>
++    <configuration name="Banos_Bot-master [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
++      <ExternalSystemSettings>
++        <option name="executionName" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="externalSystemIdString" value="GRADLE" />
++        <option name="scriptParameters" />
++        <option name="taskDescriptions">
++          <list />
++        </option>
++        <option name="taskNames">
++          <list>
++            <option value="wrapper" />
++          </list>
++        </option>
++        <option name="vmOptions" />
++      </ExternalSystemSettings>
++      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
++      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
++      <DebugAllEnabled>false</DebugAllEnabled>
++      <method v="2" />
++    </configuration>
+     <list>
+-      <item itemvalue="Application.Main" />
+-      <item itemvalue="Gradle.Banos_Bot-master [build]" />
+-      <item itemvalue="Gradle.Banos_Bot [shadowJar]" />
+-      <item itemvalue="Gradle.Banos_Bot [stage]" />
+-      <item itemvalue="Gradle.Banos_Bot [wrapper]" />
++      <item itemvalue="Gradle.Banos_Bot-master [assembleDist]" />
++      <item itemvalue="Gradle.Banos_Bot-master [stage]" />
++      <item itemvalue="Gradle.Banos_Bot-master [init]" />
++      <item itemvalue="Gradle.Banos_Bot-master [runShadow]" />
++      <item itemvalue="Gradle.Banos_Bot-master [run]" />
++      <item itemvalue="Gradle.Banos_Bot-master [wrapper]" />
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Gradle.Banos_Bot [stage]" />
+-        <item itemvalue="Application.Main" />
+-        <item itemvalue="Gradle.Banos_Bot-master [build]" />
+-        <item itemvalue="Gradle.Banos_Bot [wrapper]" />
+-        <item itemvalue="Gradle.Banos_Bot [shadowJar]" />
++        <item itemvalue="Gradle.Banos_Bot-master [stage]" />
++        <item itemvalue="Gradle.Banos_Bot-master [init]" />
++        <item itemvalue="Gradle.Banos_Bot-master [wrapper]" />
++        <item itemvalue="Gradle.Banos_Bot-master [runShadow]" />
++        <item itemvalue="Gradle.Banos_Bot-master [run]" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -333,7 +389,7 @@
+       <workItem from="1658005027175" duration="3957000" />
+       <workItem from="1658023422970" duration="2237000" />
+       <workItem from="1658073492659" duration="4173000" />
+-      <workItem from="1658077881956" duration="2832000" />
++      <workItem from="1658077881956" duration="5809000" />
+     </task>
+     <task id="LOCAL-00001" summary="STUFF">
+       <created>1637122246925</created>
+@@ -468,7 +524,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1658081290578</updated>
+     </task>
+-    <option name="localTasksCounter" value="20" />
++    <task id="LOCAL-00020" summary="Changed Status">
++      <created>1658082022862</created>
++      <option name="number" value="00020" />
++      <option name="presentableId" value="LOCAL-00020" />
++      <option name="project" value="LOCAL" />
++      <updated>1658082022862</updated>
++    </task>
++    <task id="LOCAL-00021" summary="Changed Status">
++      <created>1658082037340</created>
++      <option name="number" value="00021" />
++      <option name="presentableId" value="LOCAL-00021" />
++      <option name="project" value="LOCAL" />
++      <updated>1658082037340</updated>
++    </task>
++    <option name="localTasksCounter" value="22" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: build/scripts/Banos_Bot.bat
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@rem\r\n@rem Copyright 2015 the original author or authors.\r\n@rem\r\n@rem Licensed under the Apache License, Version 2.0 (the \"License\");\r\n@rem you may not use this file except in compliance with the License.\r\n@rem You may obtain a copy of the License at\r\n@rem\r\n@rem      https://www.apache.org/licenses/LICENSE-2.0\r\n@rem\r\n@rem Unless required by applicable law or agreed to in writing, software\r\n@rem distributed under the License is distributed on an \"AS IS\" BASIS,\r\n@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\r\n@rem See the License for the specific language governing permissions and\r\n@rem limitations under the License.\r\n@rem\r\n\r\n@if \"%DEBUG%\" == \"\" @echo off\r\n@rem ##########################################################################\r\n@rem\r\n@rem  Banos_Bot startup script for Windows\r\n@rem\r\n@rem ##########################################################################\r\n\r\n@rem Set local scope for the variables with windows NT shell\r\nif \"%OS%\"==\"Windows_NT\" setlocal\r\n\r\nset DIRNAME=%~dp0\r\nif \"%DIRNAME%\" == \"\" set DIRNAME=.\r\nset APP_BASE_NAME=%~n0\r\nset APP_HOME=%DIRNAME%..\r\n\r\n@rem Resolve any \".\" and \"..\" in APP_HOME to make it shorter.\r\nfor %%i in (\"%APP_HOME%\") do set APP_HOME=%%~fi\r\n\r\n@rem Add default JVM options here. You can also use JAVA_OPTS and BANOS_BOT_OPTS to pass JVM options to this script.\r\nset DEFAULT_JVM_OPTS=\r\n\r\n@rem Find java.exe\r\nif defined JAVA_HOME goto findJavaFromJavaHome\r\n\r\nset JAVA_EXE=java.exe\r\n%JAVA_EXE% -version >NUL 2>&1\r\nif \"%ERRORLEVEL%\" == \"0\" goto execute\r\n\r\necho.\r\necho ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.\r\necho.\r\necho Please set the JAVA_HOME variable in your environment to match the\r\necho location of your Java installation.\r\n\r\ngoto fail\r\n\r\n:findJavaFromJavaHome\r\nset JAVA_HOME=%JAVA_HOME:\"=%\r\nset JAVA_EXE=%JAVA_HOME%/bin/java.exe\r\n\r\nif exist \"%JAVA_EXE%\" goto execute\r\n\r\necho.\r\necho ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%\r\necho.\r\necho Please set the JAVA_HOME variable in your environment to match the\r\necho location of your Java installation.\r\n\r\ngoto fail\r\n\r\n:execute\r\n@rem Setup the command line\r\n\r\nset CLASSPATH=%APP_HOME%\\lib\\Banos_Bot-1.1.0-SNAPSHOT.jar;%APP_HOME%\\lib\\JDA-5.0.0-alpha.14.jar;%APP_HOME%\\lib\\botCommons-beta_3.0.3.jar;%APP_HOME%\\lib\\logback-classic-1.3.0-alpha14.jar;%APP_HOME%\\lib\\java-dotenv-5.2.2.jar;%APP_HOME%\\lib\\paste-client-java-1.0.16.jar;%APP_HOME%\\lib\\discord-webhooks-0.8.0.jar;%APP_HOME%\\lib\\lavaplayer-1.3.50.jar;%APP_HOME%\\lib\\HikariCP-5.0.1.jar;%APP_HOME%\\lib\\sqlite-jdbc-3.36.0.3.jar;%APP_HOME%\\lib\\json-simple-1.1.1.jar;%APP_HOME%\\lib\\reliqua-2.6.5.jar;%APP_HOME%\\lib\\trove4j-3.0.3.jar;%APP_HOME%\\lib\\jackson-annotations-2.13.2.jar;%APP_HOME%\\lib\\jackson-databind-2.13.2.2.jar;%APP_HOME%\\lib\\jackson-core-2.13.2.jar;%APP_HOME%\\lib\\jda-utilities-examples-3.0.1.jar;%APP_HOME%\\lib\\jda-utilities-command-3.0.1.jar;%APP_HOME%\\lib\\jda-utilities-menu-3.0.1.jar;%APP_HOME%\\lib\\jsr305-3.0.2.jar;%APP_HOME%\\lib\\okhttp-4.9.3.jar;%APP_HOME%\\lib\\okio-jvm-2.8.0.jar;%APP_HOME%\\lib\\kotlin-stdlib-1.4.10.jar;%APP_HOME%\\lib\\annotations-23.0.0.jar;%APP_HOME%\\lib\\lava-common-1.1.0.jar;%APP_HOME%\\lib\\slf4j-api-2.0.0-alpha5.jar;%APP_HOME%\\lib\\nv-websocket-client-2.14.jar;%APP_HOME%\\lib\\opus-java-1.1.1.jar;%APP_HOME%\\lib\\commons-collections4-4.4.jar;%APP_HOME%\\lib\\jsoup-1.13.1.jar;%APP_HOME%\\lib\\jda-utilities-doc-3.0.1.jar;%APP_HOME%\\lib\\jda-utilities-commons-3.0.1.jar;%APP_HOME%\\lib\\logback-core-1.3.0-alpha14.jar;%APP_HOME%\\lib\\json-20210307.jar;%APP_HOME%\\lib\\lavaplayer-natives-1.3.13.jar;%APP_HOME%\\lib\\httpclient-4.5.10.jar;%APP_HOME%\\lib\\commons-io-2.6.jar;%APP_HOME%\\lib\\base64-2.3.9.jar;%APP_HOME%\\lib\\junit-4.10.jar;%APP_HOME%\\lib\\opus-java-api-1.1.1.jar;%APP_HOME%\\lib\\opus-java-natives-1.1.1.jar;%APP_HOME%\\lib\\httpcore-4.4.12.jar;%APP_HOME%\\lib\\commons-logging-1.2.jar;%APP_HOME%\\lib\\commons-codec-1.11.jar;%APP_HOME%\\lib\\hamcrest-core-1.1.jar;%APP_HOME%\\lib\\kotlin-stdlib-common-1.4.10.jar;%APP_HOME%\\lib\\jna-4.4.0.jar\r\n\r\n\r\n@rem Execute Banos_Bot\r\n\"%JAVA_EXE%\" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %BANOS_BOT_OPTS%  -classpath \"%CLASSPATH%\" banos.bot.Main %*\r\n\r\n:end\r\n@rem End local scope for the variables with windows NT shell\r\nif \"%ERRORLEVEL%\"==\"0\" goto mainEnd\r\n\r\n:fail\r\nrem Set variable BANOS_BOT_EXIT_CONSOLE if you need the _script_ return code instead of\r\nrem the _cmd.exe /c_ return code!\r\nif  not \"\" == \"%BANOS_BOT_EXIT_CONSOLE%\" exit 1\r\nexit /b 1\r\n\r\n:mainEnd\r\nif \"%OS%\"==\"Windows_NT\" endlocal\r\n\r\n:omega\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/scripts/Banos_Bot.bat b/build/scripts/Banos_Bot.bat
+--- a/build/scripts/Banos_Bot.bat	(revision 435b69cce645ae7a1c08ed73d43cb3b630bd2d1b)
++++ b/build/scripts/Banos_Bot.bat	(date 1658089625370)
+@@ -67,7 +67,7 @@
+ :execute
+ @rem Setup the command line
+ 
+-set CLASSPATH=%APP_HOME%\lib\Banos_Bot-1.1.0-SNAPSHOT.jar;%APP_HOME%\lib\JDA-5.0.0-alpha.14.jar;%APP_HOME%\lib\botCommons-beta_3.0.3.jar;%APP_HOME%\lib\logback-classic-1.3.0-alpha14.jar;%APP_HOME%\lib\java-dotenv-5.2.2.jar;%APP_HOME%\lib\paste-client-java-1.0.16.jar;%APP_HOME%\lib\discord-webhooks-0.8.0.jar;%APP_HOME%\lib\lavaplayer-1.3.50.jar;%APP_HOME%\lib\HikariCP-5.0.1.jar;%APP_HOME%\lib\sqlite-jdbc-3.36.0.3.jar;%APP_HOME%\lib\json-simple-1.1.1.jar;%APP_HOME%\lib\reliqua-2.6.5.jar;%APP_HOME%\lib\trove4j-3.0.3.jar;%APP_HOME%\lib\jackson-annotations-2.13.2.jar;%APP_HOME%\lib\jackson-databind-2.13.2.2.jar;%APP_HOME%\lib\jackson-core-2.13.2.jar;%APP_HOME%\lib\jda-utilities-examples-3.0.1.jar;%APP_HOME%\lib\jda-utilities-command-3.0.1.jar;%APP_HOME%\lib\jda-utilities-menu-3.0.1.jar;%APP_HOME%\lib\jsr305-3.0.2.jar;%APP_HOME%\lib\okhttp-4.9.3.jar;%APP_HOME%\lib\okio-jvm-2.8.0.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.10.jar;%APP_HOME%\lib\annotations-23.0.0.jar;%APP_HOME%\lib\lava-common-1.1.0.jar;%APP_HOME%\lib\slf4j-api-2.0.0-alpha5.jar;%APP_HOME%\lib\nv-websocket-client-2.14.jar;%APP_HOME%\lib\opus-java-1.1.1.jar;%APP_HOME%\lib\commons-collections4-4.4.jar;%APP_HOME%\lib\jsoup-1.13.1.jar;%APP_HOME%\lib\jda-utilities-doc-3.0.1.jar;%APP_HOME%\lib\jda-utilities-commons-3.0.1.jar;%APP_HOME%\lib\logback-core-1.3.0-alpha14.jar;%APP_HOME%\lib\json-20210307.jar;%APP_HOME%\lib\lavaplayer-natives-1.3.13.jar;%APP_HOME%\lib\httpclient-4.5.10.jar;%APP_HOME%\lib\commons-io-2.6.jar;%APP_HOME%\lib\base64-2.3.9.jar;%APP_HOME%\lib\junit-4.10.jar;%APP_HOME%\lib\opus-java-api-1.1.1.jar;%APP_HOME%\lib\opus-java-natives-1.1.1.jar;%APP_HOME%\lib\httpcore-4.4.12.jar;%APP_HOME%\lib\commons-logging-1.2.jar;%APP_HOME%\lib\commons-codec-1.11.jar;%APP_HOME%\lib\hamcrest-core-1.1.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.10.jar;%APP_HOME%\lib\jna-4.4.0.jar
++set CLASSPATH=%APP_HOME%\lib\Banos_Bot-1.1.0-SNAPSHOT.jar;%APP_HOME%\lib\JDA-5.0.0-alpha.14.jar;%APP_HOME%\lib\botCommons-beta_3.0.3.jar;%APP_HOME%\lib\logback-classic-1.3.0-alpha14.jar;%APP_HOME%\lib\java-dotenv-5.2.2.jar;%APP_HOME%\lib\lavaplayer-1.3.50.jar;%APP_HOME%\lib\HikariCP-5.0.1.jar;%APP_HOME%\lib\sqlite-jdbc-3.36.0.3.jar;%APP_HOME%\lib\json-simple-1.1.1.jar;%APP_HOME%\lib\reliqua-2.6.5.jar;%APP_HOME%\lib\trove4j-3.0.3.jar;%APP_HOME%\lib\jackson-annotations-2.13.2.jar;%APP_HOME%\lib\jackson-databind-2.13.2.2.jar;%APP_HOME%\lib\jackson-core-2.13.2.jar;%APP_HOME%\lib\jda-utilities-examples-3.0.1.jar;%APP_HOME%\lib\jda-utilities-command-3.0.1.jar;%APP_HOME%\lib\jda-utilities-menu-3.0.1.jar;%APP_HOME%\lib\jsr305-3.0.2.jar;%APP_HOME%\lib\okhttp-4.9.3.jar;%APP_HOME%\lib\okio-jvm-2.8.0.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.10.jar;%APP_HOME%\lib\annotations-23.0.0.jar;%APP_HOME%\lib\lava-common-1.1.0.jar;%APP_HOME%\lib\slf4j-api-2.0.0-alpha5.jar;%APP_HOME%\lib\nv-websocket-client-2.14.jar;%APP_HOME%\lib\opus-java-1.1.1.jar;%APP_HOME%\lib\commons-collections4-4.4.jar;%APP_HOME%\lib\jsoup-1.13.1.jar;%APP_HOME%\lib\jda-utilities-doc-3.0.1.jar;%APP_HOME%\lib\jda-utilities-commons-3.0.1.jar;%APP_HOME%\lib\logback-core-1.3.0-alpha14.jar;%APP_HOME%\lib\lavaplayer-natives-1.3.13.jar;%APP_HOME%\lib\httpclient-4.5.10.jar;%APP_HOME%\lib\commons-io-2.6.jar;%APP_HOME%\lib\base64-2.3.9.jar;%APP_HOME%\lib\junit-4.10.jar;%APP_HOME%\lib\opus-java-api-1.1.1.jar;%APP_HOME%\lib\opus-java-natives-1.1.1.jar;%APP_HOME%\lib\json-20160810.jar;%APP_HOME%\lib\httpcore-4.4.12.jar;%APP_HOME%\lib\commons-logging-1.2.jar;%APP_HOME%\lib\commons-codec-1.11.jar;%APP_HOME%\lib\hamcrest-core-1.1.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.10.jar;%APP_HOME%\lib\jna-4.4.0.jar
+ 
+ 
+ @rem Execute Banos_Bot
+Index: build/tmp/jar/MANIFEST.MF
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Manifest-Version: 1.0\r\nClass-Path: /libs/Banos_Bot-1.1.0-SNAPSHOT-all\r\nMain-Class: banos.bot.Main\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/jar/MANIFEST.MF b/build/tmp/jar/MANIFEST.MF
+--- a/build/tmp/jar/MANIFEST.MF	(revision 435b69cce645ae7a1c08ed73d43cb3b630bd2d1b)
++++ b/build/tmp/jar/MANIFEST.MF	(date 1658089625226)
+@@ -1,4 +1,4 @@
+ Manifest-Version: 1.0
+-Class-Path: /libs/Banos_Bot-1.1.0-SNAPSHOT-all
++Class-Path: ./build/libs/Banos_Bot-1.1.0-SNAPSHOT-all
+ Main-Class: banos.bot.Main
+ 
+Index: build/tmp/shadowJar/MANIFEST.MF
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Manifest-Version: 1.0\r\nClass-Path: /libs/Banos_Bot-1.1.0-SNAPSHOT-all\r\nMain-Class: banos.bot.Main\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/shadowJar/MANIFEST.MF b/build/tmp/shadowJar/MANIFEST.MF
+--- a/build/tmp/shadowJar/MANIFEST.MF	(revision 435b69cce645ae7a1c08ed73d43cb3b630bd2d1b)
++++ b/build/tmp/shadowJar/MANIFEST.MF	(date 1658089627144)
+@@ -1,4 +1,4 @@
+ Manifest-Version: 1.0
+-Class-Path: /libs/Banos_Bot-1.1.0-SNAPSHOT-all
++Class-Path: ./build/libs/Banos_Bot-1.1.0-SNAPSHOT-all
+ Main-Class: banos.bot.Main
+ 
