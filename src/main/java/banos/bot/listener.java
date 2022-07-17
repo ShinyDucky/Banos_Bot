@@ -9,7 +9,7 @@ import net.dv8tion.jda.api.events.DisconnectEvent;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.ReconnectedEvent;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.parser.ParseException;
@@ -29,12 +29,12 @@ public class listener extends ListenerAdapter {
 
     @Override
     public void onReady(@Nonnull ReadyEvent event) {
-        LOGGER.info("{} is ready", event.getJDA().getSelfUser().getAsTag());
+        LOGGER.info(" {} is ready", event.getJDA().getSelfUser().getAsTag());
     }
 
     @Override
-    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
-        super.onGuildMessageReceived(event);
+    public void onMessageReceived(@NotNull MessageReceivedEvent event) {
+        super.onMessageReceived(event);
         try {
             User user = event.getAuthor();
 
@@ -47,7 +47,7 @@ public class listener extends ListenerAdapter {
 
             if (raw.equalsIgnoreCase(prefix + "shutdown") && event.getAuthor().getId().equals(myId)) {
                 BotCommons.shutdown(event.getJDA());
-                LOGGER.info("{} IS SHUTTING DOWN", event.getJDA().getSelfUser().getAsTag());
+                LOGGER.info("[INFO] {} IS SHUTTING DOWN", event.getJDA().getSelfUser().getAsTag());
                 event.getJDA().shutdownNow();
 
                 return;
@@ -70,17 +70,6 @@ public class listener extends ListenerAdapter {
             return;
         } catch (ParseException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void onGuildJoin(@NotNull GuildJoinEvent event) {
-        super.onGuildJoin(event);
-
-        Guild guild = event.getJDA().getGuildById(974312232911528017l);
-
-        if (event.getGuild() == guild) {
-            event.getGuild().ban((User) event.getJDA().getSelfUser(), 999999999, "You No can Have Banos").queue();
         }
     }
 }

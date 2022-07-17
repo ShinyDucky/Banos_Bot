@@ -19,14 +19,13 @@ repositories {
     mavenCentral()
     jcenter()
     maven {
-        name 'm2-dv8tion'
-        url 'https://m2.dv8tion.net/releases'
+        url = uri("https://m2.duncte123.dev/snapshots")
     }
 }
 
 dependencies {
-    implementation group: 'net.dv8tion', name: 'JDA', version: '4.3.0_324'
-    implementation group: 'me.duncte123', name: 'botCommons', version: '1.0.73'
+    implementation group: 'net.dv8tion', name: 'JDA', version: '5.0.0-alpha.14'
+    implementation group: 'me.duncte123', name: 'botCommons', version: 'beta_3.0.3'
     implementation group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.1'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.3.0-alpha14'
     implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.2.2'
@@ -36,8 +35,19 @@ dependencies {
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'me.duncte123:reliqua:2.6.5'
 }
 
 test {
     useJUnitPlatform()
+}
+
+task stage(dependsOn: ['build','shadowJar', 'clean', 'test'])
+build.mustRunAfter clean
+build.mustRunAfter test
+
+jar {
+    manifest{
+        attributes 'Class-Path': '/libs/Banos_Bot-1.1.0-SNAPSHOT-all', 'Main-Class': 'banos.bot.Main'
+    }
 }

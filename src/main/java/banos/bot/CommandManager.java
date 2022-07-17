@@ -2,7 +2,7 @@ package banos.bot;
 
 import banos.bot.command.CommandContext;
 import banos.bot.command.ICommand;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import banos.bot.command.commands.*;
@@ -44,7 +44,7 @@ public class CommandManager {
         String searchLower = search.toLowerCase();
 
         for (ICommand command : this.commands) {
-            if (command.getName().equalsIgnoreCase(searchLower) || command.getAliases().contains(searchLower)) {
+            if (command.getName().equalsIgnoreCase(searchLower)) {
                 return command;
             }
         }
@@ -52,7 +52,7 @@ public class CommandManager {
         return null;
     }
 
-    void handle(GuildMessageReceivedEvent event) throws IOException, ParseException {
+    void handle(MessageReceivedEvent event) throws IOException, ParseException {
         String[] split = event.getMessage().getContentRaw()
                 .replaceFirst("(?i)" + Pattern.quote(Config.getPrefix()), "")
                 .split("\\s+");

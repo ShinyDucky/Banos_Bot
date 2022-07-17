@@ -1,9 +1,16 @@
 package banos.bot;
 
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.VoiceChannel;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
+import net.dv8tion.jda.internal.entities.VoiceChannelImpl;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,14 +26,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Main extends ListenerAdapter {
     public static void main(String[] args) throws LoginException, IOException {
-        JDABuilder builder = JDABuilder.createDefault(
+        JDA jda = JDABuilder.createDefault(
                         Config.getToken(),
                         GatewayIntent.GUILD_MEMBERS,
                         GatewayIntent.GUILD_MESSAGES,
                         GatewayIntent.GUILD_PRESENCES,
-                        GatewayIntent.GUILD_EMOJIS,
                         GatewayIntent.GUILD_BANS,
                         GatewayIntent.GUILD_VOICE_STATES,
                         GatewayIntent.DIRECT_MESSAGES,
@@ -35,7 +41,15 @@ public class Main {
                 )
                 .addEventListeners(new listener())
                 .setActivity(Activity.listening("Leave Me Alone"))
-                .setStatus(OnlineStatus.ONLINE);
-        builder.build();
+                .setStatus(OnlineStatus.ONLINE).build();
+
+        CommandListUpdateAction commands = jda.updateCommands();
+    }
+
+    @Override
+    public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
+        super.onSlashCommandInteraction(event);
+
+        if (event.getGuild() == null) return;
     }
 }

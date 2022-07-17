@@ -2,11 +2,11 @@ package banos.bot.command;
 
 import me.duncte123.botcommons.commands.ICommandContext;
 import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.List;
 
-public record CommandContext(GuildMessageReceivedEvent event,
+public record CommandContext(MessageReceivedEvent event,
                              List<String> args) implements ICommandContext {
 
     @Override
@@ -15,7 +15,7 @@ public record CommandContext(GuildMessageReceivedEvent event,
     }
 
     @Override
-    public GuildMessageReceivedEvent getEvent() {
+    public MessageReceivedEvent getEvent() {
         return this.event;
     }
 

@@ -31,5 +31,10 @@
       <option name="name" value="duncte123-jfrog" />
       <option name="url" value="https://duncte123.jfrog.io/artifactory/maven" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://m2.duncte123.dev/snapshots" />
+    </remote-repository>
   </component>
 </project>
