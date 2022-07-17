@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45151b75-8c5c-4ef6-a023-69a5ab7a9089" name="Changes" comment="Changed Status">
-      <change afterPath="$PROJECT_DIR$/.slugignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
@@ -170,7 +167,20 @@
       <recent name="banos.bot" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Banos_Bot-master [stage]">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="banos.bot.Main" />
+      <module name="Banos_Bot.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="banos.bot.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Banos_Bot-master [assembleDist]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -234,27 +244,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Banos_Bot-master [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="Banos_Bot-master [stage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -298,20 +287,20 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="Gradle.Banos_Bot-master [assembleDist]" />
       <item itemvalue="Gradle.Banos_Bot-master [stage]" />
       <item itemvalue="Gradle.Banos_Bot-master [init]" />
       <item itemvalue="Gradle.Banos_Bot-master [runShadow]" />
-      <item itemvalue="Gradle.Banos_Bot-master [run]" />
       <item itemvalue="Gradle.Banos_Bot-master [wrapper]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.Banos_Bot-master [stage]" />
         <item itemvalue="Gradle.Banos_Bot-master [init]" />
         <item itemvalue="Gradle.Banos_Bot-master [wrapper]" />
         <item itemvalue="Gradle.Banos_Bot-master [runShadow]" />
-        <item itemvalue="Gradle.Banos_Bot-master [run]" />
       </list>
     </recent_temporary>
   </component>
@@ -372,7 +361,7 @@
       <workItem from="1658005027175" duration="3957000" />
       <workItem from="1658023422970" duration="2237000" />
       <workItem from="1658073492659" duration="4173000" />
-      <workItem from="1658077881956" duration="6727000" />
+      <workItem from="1658077881956" duration="7248000" />
     </task>
     <task id="LOCAL-00001" summary="STUFF">
       <created>1637122246925</created>
@@ -528,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658089801517</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Changed Status">
+      <created>1658090583947</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1658090583947</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
