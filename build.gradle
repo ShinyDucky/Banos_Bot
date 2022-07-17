@@ -21,6 +21,15 @@ repositories {
     maven {
         url = uri("https://m2.duncte123.dev/snapshots")
     }
+    maven {
+        url = uri("https://m2.dv8tion.net/releases")
+    }
+    maven {
+        url = uri("https://m2.duncte123.dev/releases")
+    }
+    maven {
+        url = uri("https://duncte123.jfrog.io/artifactory/maven")
+    }
 }
 
 dependencies {
