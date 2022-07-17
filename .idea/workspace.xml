@@ -160,9 +160,6 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <envs>
-        <env name="TOKEN" value="OTA4NDczOTkxOTA2MzQ0OTYw.G9iSb7.6Je2Fnud2AQz_9ffmEKwTn9G95NntC_N6wEUq4" />
-      </envs>
       <option name="MAIN_CLASS_NAME" value="banos.bot.Main" />
       <module name="Banos_Bot.main" />
       <extension name="coverage">
