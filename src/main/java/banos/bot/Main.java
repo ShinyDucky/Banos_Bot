@@ -40,7 +40,7 @@ public class Main extends ListenerAdapter {
                         GatewayIntent.DIRECT_MESSAGE_TYPING
                 )
                 .addEventListeners(new listener())
-                .setActivity(Activity.listening("Leave Me Alone"))
+                .setActivity(Activity.watching("you..."))
                 .setStatus(OnlineStatus.ONLINE).build();
 
         CommandListUpdateAction commands = jda.updateCommands();
