@@ -41,8 +41,8 @@ public class Main extends ListenerAdapter {
                         GatewayIntent.DIRECT_MESSAGE_TYPING
                 )
                 .addEventListeners(new listener())
-                .setActivity(Activity.watching("you Wazowski. Always watching. Always."))
-                .setStatus(OnlineStatus.ONLINE).build();
+                .setActivity(Activity.playing("Sea of Deez"))
+                .setStatus(OnlineStatus.IDLE).build();
 
         CommandListUpdateAction commands = jda.updateCommands();
     }

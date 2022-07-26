@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'net.dv8tion', name: 'JDA', version: '5.0.0-alpha.14'
+    implementation group: 'net.dv8tion', name: 'JDA', version: '5.0.0-alpha.17'
     implementation group: 'me.duncte123', name: 'botCommons', version: 'beta_3.0.3'
     implementation group: 'com.jagrosh', name: 'jda-utilities', version: '3.0.1'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.3.0-alpha14'
