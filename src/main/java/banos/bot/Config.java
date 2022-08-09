@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Config {
     protected static String token = System.getenv().get("TOKEN");
     private static String prefix = "!";
-    private static String version = "1.5.0";
+    private static String version = "1.6.1";
 
     public static String getToken() throws FileNotFoundException {
         return token;
