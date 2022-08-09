@@ -51,7 +51,7 @@ public class Main extends ListenerAdapter {
                         GatewayIntent.DIRECT_MESSAGE_TYPING
                 )
                 .addEventListeners(new listener(), new Main())
-                .setActivity(Activity.playing("Sea of Deez"))
+                .setActivity(Activity.watching("NEW SLASH COMMANDS"))
                 .setStatus(OnlineStatus.IDLE).build();
 
         CommandListUpdateAction commands = jda.updateCommands();
