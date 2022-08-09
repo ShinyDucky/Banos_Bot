@@ -79,8 +79,6 @@ public class listener extends ListenerAdapter {
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         super.onSlashCommandInteraction(event);
 
-        if (event.getGuild() == null) return;
-
         LOGGERF.info(event.getName());
         switch (event.getName()) {
             case "ban":

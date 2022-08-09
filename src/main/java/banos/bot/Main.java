@@ -71,6 +71,9 @@ public class Main extends ListenerAdapter {
         commands.addCommands(
                 Commands.slash("banos", "Configuration and Help")
                         .addSubcommands(new SubcommandData("info", "Information about the bot."))
+                        .addSubcommands(new SubcommandData("sez", "Make a banos sez.")
+                                .addOptions(new OptionData(OptionType.STRING, "message", "The Message to say")
+                                        .setRequired(true)))
         );
 
         commands.addCommands(Commands.slash("kick", "Kicks a user. Requires Kick Members Perm to kick users")

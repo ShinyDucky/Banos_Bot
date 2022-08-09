@@ -7,12 +7,12 @@ import net.dv8tion.jda.api.interactions.InteractionHook;
 
 public class Banos {
     public static void handle(SlashCommandInteractionEvent event) {
-        event.deferReply(true).queue();
+        event.deferReply(false).queue();
         InteractionHook hook = event.getHook();
-        hook.setEphemeral(false);
 
         switch (event.getSubcommandName()) {
             case "info":
+                hook.setEphemeral(true);
                 EmbedBuilder eb = new EmbedBuilder()
                         .setTitle("Bot Info")
                         .setDescription("This bot is made by <@743218702022869083>")
@@ -22,7 +22,20 @@ public class Banos {
                         .setAuthor("INFO OF BANOS");
 
                 hook.sendMessageEmbeds(eb.build()).queue();
+                break;
 
+            case "sez":
+                hook.setEphemeral(false);
+                String say = event.getOption("message").getAsString();
+
+                EmbedBuilder eb1 = new EmbedBuilder()
+                        .setTitle("BANOS SEZ: " + say)
+                        .addField("Requested by:", event.getUser().getAsMention(), false)
+                        .setFooter("Banos Sez")
+                        .setColor(event.getMember().getColor());
+
+                hook.sendMessageEmbeds(eb1.build()).queue();
+                break;
         }
     }
 }
