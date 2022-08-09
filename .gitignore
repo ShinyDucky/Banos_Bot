@@ -1,4 +1,5 @@
-/build
-/lib
+build
+lib
+.idea/workspace.xml
 /.idea
 /src/main/Test

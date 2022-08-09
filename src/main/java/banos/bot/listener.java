@@ -2,6 +2,8 @@ package banos.bot;
 
 import banos.bot.api.Ban;
 import banos.bot.api.Banos;
+import banos.bot.api.Kick;
+import banos.bot.api.Unban;
 import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
@@ -89,6 +91,13 @@ public class listener extends ListenerAdapter {
             case "banos":
                 Banos.handle(event);
                 break;
+            case "kick":
+                Member member1 = event.getOption("target").getAsMember();
+                User user1 = event.getOption("target").getAsUser();
+                Kick.handle(event, user1, member1);
+                break;
+            case "unban":
+                Unban.handle(event);
         }
     }
 }

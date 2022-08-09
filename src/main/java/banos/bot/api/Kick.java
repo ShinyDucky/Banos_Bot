@@ -10,18 +10,18 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 
 import java.awt.*;
 
-public class Ban {
-    public static void SlashBan(SlashCommandInteractionEvent event, User user, Member member) {
+public class Kick {
+    public static void handle(SlashCommandInteractionEvent event, User user, Member member) {
         event.deferReply(false).queue();
         InteractionHook hook = event.getHook();
         hook.setEphemeral(false);
-        if (!event.getMember().hasPermission(Permission.BAN_MEMBERS)) {
+        if (!event.getMember().hasPermission(Permission.KICK_MEMBERS)) {
             hook.sendMessage("You do not have permission to ban members. :sob:").queue();
             return;
         }
 
         Member selfMember = event.getGuild().getSelfMember();
-        if (!selfMember.hasPermission(Permission.BAN_MEMBERS)) {
+        if (!selfMember.hasPermission(Permission.KICK_MEMBERS)) {
             hook.sendMessage("I do not have permission to ban members. :sob:").queue();
             return;
         }
@@ -30,21 +30,18 @@ public class Ban {
             hook.sendMessage("THAT USER IS TOO POWERFULL! :scream:").queue();
         }
 
-        int delDays = 7;
         String reason = event.getOption("reason",
                 () -> "Banned by " + event.getUser().getAsTag(),
                 OptionMapping::getAsString);
 
         EmbedBuilder builder = new EmbedBuilder().setImage("https://media.discordapp.net/attachments/761236786936414291/909985727310364672/Banos.png?width=439&height=554")
-                .setTitle("You Have Been Banned BY... BANOS")
+                .setTitle("You Have Been Kicked BY... BANOS :banos_gauntlet")
                 .setColor(Color.RED);
-
         user.openPrivateChannel().complete().sendMessageEmbeds(builder.build()).queue();
 
-        event.getGuild().ban(user, 1, reason)
+        event.getGuild().kick(user, reason)
                 .reason(reason)
-                .flatMap(v -> hook.sendMessage("Banned user " + user.getAsTag() + " by Banos using Ban stone on the Banos Gauntlet :banos_gaunlet:"))
+                .flatMap(v -> hook.sendMessage("Kicked User " + user.getAsTag() + " By Banos using the kick stone on the :banos_gauntlet:"))
                 .queue();
-
     }
 }

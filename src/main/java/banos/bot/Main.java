@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -54,13 +55,15 @@ public class Main extends ListenerAdapter {
                 .setActivity(Activity.watching("NEW SLASH COMMANDS"))
                 .setStatus(OnlineStatus.IDLE).build();
 
+        Message.suppressContentIntentWarning();
+
         CommandListUpdateAction commands = jda.updateCommands();
 
         commands.addCommands(
-                Commands.slash("ban", "Bans a user. Requires permission to ban users")
+                Commands.slash("ban", "Bans a user. Requires Ban Members Perm to ban users")
                         .addOptions(new OptionData(OptionType.USER, "target", "The target to ban")
                                 .setRequired(true))
-                        .addOptions(new OptionData(OptionType.STRING, "reason", "The Reason to ban someone (default: Banned by <user> for \"No Reason Provided\""))
+                        .addOptions(new OptionData(OptionType.STRING, "reason", "The Reason to ban someone (default: Banned by <user> for \"No Reason Provided\")"))
                         .setGuildOnly(true)
                         .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.BAN_MEMBERS))
         );
@@ -68,6 +71,19 @@ public class Main extends ListenerAdapter {
         commands.addCommands(
                 Commands.slash("banos", "Configuration and Help")
                         .addSubcommands(new SubcommandData("info", "Information about the bot."))
+        );
+
+        commands.addCommands(Commands.slash("kick", "Kicks a user. Requires Kick Members Perm to kick users")
+                .addOptions(new OptionData(OptionType.USER, "target", "The target to kick").setRequired(true))
+                .addOptions(new OptionData(OptionType.STRING, "reason", "The Reason to ban someone (default: Banned by <user> for \"No Reason Provided\")"))
+                .setGuildOnly(true)
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.KICK_MEMBERS))
+        );
+
+        commands.addCommands(Commands.slash("unban", "Unbans a user. Requires Ban Members Perm to unban a user")
+                .addOptions(new OptionData(OptionType.STRING, "user", "The user to unban").setRequired(true))
+                .setGuildOnly(true)
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.BAN_MEMBERS))
         );
 
         commands.queue();
