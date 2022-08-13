@@ -1,14 +1,15 @@
 package banos.bot;
 
+import banos.bot.api.Ban;
+import banos.bot.api.Banos;
+import banos.bot.api.Kick;
+import banos.bot.api.Unban;
 import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.events.DisconnectEvent;
 import net.dv8tion.jda.api.events.ReadyEvent;
-import net.dv8tion.jda.api.events.ReconnectedEvent;
-import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,7 @@ import java.io.IOException;
 
 public class listener extends ListenerAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private final Logger LOGGERF = LoggerFactory.getLogger("INFO");
     private final CommandManager manager = new CommandManager();
 
     protected String myId = "743218702022869083";
@@ -70,6 +72,30 @@ public class listener extends ListenerAdapter {
             return;
         } catch (ParseException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
+        super.onSlashCommandInteraction(event);
+
+        LOGGERF.info(event.getName());
+        switch (event.getName()) {
+            case "ban":
+                Member member = event.getOption("target").getAsMember();
+                User user = event.getOption("target").getAsUser();
+                Ban.SlashBan(event, user, member);
+                break;
+            case "banos":
+                Banos.handle(event);
+                break;
+            case "kick":
+                Member member1 = event.getOption("target").getAsMember();
+                User user1 = event.getOption("target").getAsUser();
+                Kick.handle(event, user1, member1);
+                break;
+            case "unban":
+                Unban.handle(event);
         }
     }
 }
