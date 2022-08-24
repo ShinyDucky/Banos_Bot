@@ -1,4 +1,4 @@
-package banos.bot.api;
+package banos.bot.api.cmds;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;

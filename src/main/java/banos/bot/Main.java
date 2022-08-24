@@ -5,10 +5,8 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.ChannelType;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.entities.VoiceChannel;
-import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
@@ -17,26 +15,11 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
-import net.dv8tion.jda.internal.entities.VoiceChannelImpl;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.security.auth.login.LoginException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.net.FileNameMap;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
 
 public class Main extends ListenerAdapter {
-    private final Logger LOGGER = LoggerFactory.getLogger("INFO");
-
     public static void main(String[] args) throws LoginException, IOException, InterruptedException {
         JDA jda = JDABuilder.createDefault(
                         Config.getToken(),
@@ -52,7 +35,7 @@ public class Main extends ListenerAdapter {
                         GatewayIntent.DIRECT_MESSAGE_TYPING
                 )
                 .addEventListeners(new listener(), new Main())
-                .setActivity(Activity.watching("NEW SLASH COMMANDS"))
+                .setActivity(Activity.watching("you..."))
                 .setStatus(OnlineStatus.IDLE).build();
 
         Message.suppressContentIntentWarning();
@@ -71,6 +54,7 @@ public class Main extends ListenerAdapter {
         commands.addCommands(
                 Commands.slash("banos", "Configuration and Help")
                         .addSubcommands(new SubcommandData("info", "Information about the bot."))
+                        .addSubcommands(new SubcommandData("credits", "Credits for the bot."))
                         .addSubcommands(new SubcommandData("sez", "Make a banos sez.")
                                 .addOptions(new OptionData(OptionType.STRING, "message", "The Message to say")
                                         .setRequired(true)))
@@ -87,6 +71,32 @@ public class Main extends ListenerAdapter {
                 .addOptions(new OptionData(OptionType.STRING, "user", "The user to unban").setRequired(true))
                 .setGuildOnly(true)
                 .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.BAN_MEMBERS))
+        );
+
+        commands.addCommands(Commands.slash("purge", "Purges messages in a channel. Requires Delete Messages Perm to purge.")
+                .addOptions(new OptionData(OptionType.INTEGER, "amount", "How many messages to purge (Default 100)"))
+                .setGuildOnly(true)
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_PERMISSIONS))
+        );
+
+        commands.addCommands(Commands.slash("lock", "Locks a channel. Requires Manage Channels Perm to lock.")
+                .addOptions(new OptionData(OptionType.CHANNEL, "channel", "The Channel to lock")
+                        .setChannelTypes(ChannelType.TEXT, ChannelType.GUILD_NEWS_THREAD, ChannelType.GUILD_PRIVATE_THREAD, ChannelType.GUILD_PUBLIC_THREAD, ChannelType.NEWS))
+                .setGuildOnly(true)
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_CHANNEL))
+        );
+
+        commands.addCommands(Commands.slash("unlock", "Unlocks a chanel. Requires Manage Channels Perm to unlock.")
+                .addOptions(new OptionData(OptionType.CHANNEL, "channel", "The channel to unlock")
+                        .setChannelTypes(ChannelType.TEXT, ChannelType.GUILD_NEWS_THREAD, ChannelType.GUILD_PRIVATE_THREAD, ChannelType.GUILD_PUBLIC_THREAD, ChannelType.NEWS))
+                .setGuildOnly(true)
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_CHANNEL))
+        );
+
+        commands.addCommands(Commands.slash("cursedimage", "Execute at your own risk")
+                        .addSubcommands(new SubcommandData("public", "Sends to the server"))
+                        .addSubcommands(new SubcommandData("incognito", "Sends to you"))
+                        .setGuildOnly(true)
         );
 
         commands.queue();

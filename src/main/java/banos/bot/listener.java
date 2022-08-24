@@ -1,15 +1,13 @@
 package banos.bot;
 
-import banos.bot.api.Ban;
-import banos.bot.api.Banos;
-import banos.bot.api.Kick;
-import banos.bot.api.Unban;
+import banos.bot.api.cmds.*;
 import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +77,7 @@ public class listener extends ListenerAdapter {
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         super.onSlashCommandInteraction(event);
 
-        LOGGERF.info(event.getName());
+        LOGGERF.info(event.getName() + " " + event.getSubcommandName());
         switch (event.getName()) {
             case "ban":
                 Member member = event.getOption("target").getAsMember();
@@ -96,6 +94,38 @@ public class listener extends ListenerAdapter {
                 break;
             case "unban":
                 Unban.handle(event);
+                break;
+            case "purge":
+                Purge.handle(event);
+                break;
+            case "lock":
+                lock.handle(event);
+                break;
+            case "unlock":
+                lock.unlock(event);
+                break;
+            case "cursedimage":
+                CursedImage.handle(event);
+                break;
+        }
+    }
+
+    @Override
+    public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
+        super.onButtonInteraction(event);
+
+        String[] id = event.getComponentId().split(":");
+        String authorId = id[0];
+        String type = id[1];
+
+        if (!authorId.equals(event.getUser().getId())) return;
+        event.deferEdit().queue();
+        switch (type) {
+            case "prune":
+                Purge.PurgeButton(event, id);
+                break;
+            case "delete":
+                Purge.DeleteButton(event);
         }
     }
 }
