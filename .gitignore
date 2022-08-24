@@ -1,5 +1,5 @@
 build
 lib
-.idea/workspace.xml
+*.xml
 /.idea
 /src/main/Test

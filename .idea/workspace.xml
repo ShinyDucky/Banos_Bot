@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45151b75-8c5c-4ef6-a023-69a5ab7a9089" name="Changes" comment="Moved the last commands over">
-      <change afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/Images.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/cmds/CursedImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/cmds/Purge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/cmds/lock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Ban.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Ban.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Banos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Banos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Kick.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Kick.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Unban.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/api/Unban.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/BanCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/BanCmd.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/InfoCMD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/InfoCMD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/KickCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/command/commands/KickCmd.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/banos/bot/listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/banos/bot/listener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/api/Ban.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/cmds/Ban.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/api/Banos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/cmds/Banos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/api/Kick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/cmds/Kick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/api/Unban.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/api/cmds/Unban.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banos/bot/listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banos/bot/listener.java" afterDir="false" />
-    </list>
+    <list default="true" id="45151b75-8c5c-4ef6-a023-69a5ab7a9089" name="Changes" comment="I made a lock command" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -397,7 +370,7 @@
       <workItem from="1661310579481" duration="77000" />
       <workItem from="1661310822934" duration="56000" />
       <workItem from="1661311597044" duration="315000" />
-      <workItem from="1661363385064" duration="8162000" />
+      <workItem from="1661363385064" duration="8456000" />
     </task>
     <task id="LOCAL-00001" summary="STUFF">
       <created>1637122246925</created>
@@ -616,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660061082724</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="I made a lock command">
+      <created>1661379707764</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1661379707764</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +623,8 @@
     <MESSAGE value="Fixed regular commands" />
     <MESSAGE value="Fixed Regular commands and started work on slash commands" />
     <MESSAGE value="Moved the last commands over" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved the last commands over" />
+    <MESSAGE value="I made a lock command" />
+    <option name="LAST_COMMIT_MESSAGE" value="I made a lock command" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
