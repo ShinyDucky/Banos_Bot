@@ -99,6 +99,17 @@ public class Main extends ListenerAdapter {
                         .setGuildOnly(true)
         );
 
+        commands.addCommands(Commands.slash("rockroulette", "Yes")
+                .addSubcommands(new SubcommandData("public", "Sends to the server"))
+                .addSubcommands(new SubcommandData("incognito", "Sends to you"))
+                .setGuildOnly(true)
+        );
+        commands.addCommands(Commands.slash("memegenerator", "HaHa Funny Laugh")
+                .addOptions(new OptionData(OptionType.CHANNEL, "channel", "The channel to unlock")
+                        .setChannelTypes(ChannelType.TEXT, ChannelType.NEWS))
+                .setGuildOnly(true)
+        );
+
         commands.queue();
     }
 }

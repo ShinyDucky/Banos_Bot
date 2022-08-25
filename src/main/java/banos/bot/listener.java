@@ -107,6 +107,12 @@ public class listener extends ListenerAdapter {
             case "cursedimage":
                 CursedImage.handle(event);
                 break;
+            case "rockroulette":
+                Rock.handle(event);
+                break;
+            case "memegenerator":
+                Meme.handle(event);
+                break;
         }
     }
 

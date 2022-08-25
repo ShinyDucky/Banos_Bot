@@ -65,7 +65,7 @@ public class lock {
 
         Message message = unlockChannel.retrieveMessageById(unlockChannel.getLatestMessageId()).complete();
         message.editMessageEmbeds(new EmbedBuilder()
-                .setTitle("Channel Locked")
+                .setTitle("Channel Unlocked")
                 .setDescription("The channel has been unlocked. BE GOOD")
                 .addField("Contact: ", event.getUser().getAsMention() + " to know more", true)
                 .build()).queue();

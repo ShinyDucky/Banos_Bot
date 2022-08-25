@@ -39,6 +39,7 @@ public class CursedImage {
 
                 event.getUser().openPrivateChannel().complete().sendMessage(image2).queue();
                 hook.sendMessage(image2).queue();
+                break;
         }
     }
 }
