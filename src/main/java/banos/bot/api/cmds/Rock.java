@@ -31,7 +31,9 @@ public class Rock {
                 "https://tenor.com/view/club-penguin-club-penguin-dance-club-penguin-dance-gif-doin-your-mom-gif-25234604",
                 "https://cdn.discordapp.com/attachments/915621334246096927/1012174178515963924/unknown.png",
                 "https://cdn.discordapp.com/attachments/915621334246096927/1012174206164807810/unknown.png",
-                "https://cdn.discordapp.com/attachments/915621334246096927/1012174380828201111/unknown.png"
+                "https://cdn.discordapp.com/attachments/915621334246096927/1012174380828201111/unknown.png",
+                "https://cdn.discordapp.com/attachments/925941600905994260/1012202067332435968/F6634BF3-C408-476E-A688-67D7B4330966.jpg",
+                "https://cdn.discordapp.com/attachments/925941600905994260/1012201733612638218/IMG_5823.jpg"
         );
         InteractionHook hook = event.getHook();
 
