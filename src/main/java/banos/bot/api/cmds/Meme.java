@@ -12,8 +12,10 @@ import java.util.Random;
 public class Meme {
     public static void handle(SlashCommandInteractionEvent event) {
         InteractionHook hook = event.getHook();
+/*
         event.deferReply(true).queue();
         hook.setEphemeral(true);
+*/
         List<String> images = Arrays.asList(
                 "https://i.imgflip.com/6qx2aj.jpg",
                 "https://i.imgflip.com/6qu2q4.jpg",
@@ -29,8 +31,8 @@ public class Meme {
                 "https://i.imgflip.com/6qpotw.jpg"
         );
 
-        event.deferReply(false).queue();
-        hook.setEphemeral(false);
+        event.deferReply(true).queue();
+        hook.setEphemeral(true);
         Random rand = new Random();
         String image = images.get(rand.nextInt(images.size()));
         TextChannel channel;
@@ -42,6 +44,6 @@ public class Meme {
         }
 
         channel.sendMessage(image).queue();
-        hook.sendMessage("sent").queue();
+        hook.sendMessage("sent!").queue();
     }
 }
