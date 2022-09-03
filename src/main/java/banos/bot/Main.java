@@ -15,12 +15,13 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
+import org.json.simple.parser.ParseException;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 
 public class Main extends ListenerAdapter {
-    public static void main(String[] args) throws LoginException, IOException, InterruptedException {
+    public static void main(String[] args) throws LoginException, IOException, InterruptedException, ParseException {
         JDA jda = JDABuilder.createDefault(
                         Config.getToken(),
                         GatewayIntent.GUILD_MEMBERS,
@@ -109,6 +110,13 @@ public class Main extends ListenerAdapter {
                         .setChannelTypes(ChannelType.TEXT, ChannelType.NEWS))
                 .setGuildOnly(true)
         );
+
+        commands.addCommands(Commands.slash("config", "Configures the bot")
+                .addSubcommands(new SubcommandData("setlog", "sets the log channel")
+                        .addOptions(new OptionData(OptionType.CHANNEL, "channel", "The log channel")
+                                .setChannelTypes(ChannelType.TEXT)
+                                .setRequired(true)))
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_SERVER)));
 
         commands.queue();
     }

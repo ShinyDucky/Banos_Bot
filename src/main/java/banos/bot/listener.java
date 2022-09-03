@@ -6,6 +6,8 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.ShutdownEvent;
+import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -29,7 +31,15 @@ public class listener extends ListenerAdapter {
 
     @Override
     public void onReady(@Nonnull ReadyEvent event) {
-        LOGGER.info(" {} is ready", event.getJDA().getSelfUser().getAsTag());
+        LOGGER.info("{} is ready", event.getJDA().getSelfUser().getAsTag());
+
+        try {
+            Config.startupDb(event.getJDA());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -81,7 +91,13 @@ public class listener extends ListenerAdapter {
             case "ban":
                 Member member = event.getOption("target").getAsMember();
                 User user = event.getOption("target").getAsUser();
-                Ban.SlashBan(event, user, member);
+                try {
+                    Ban.SlashBan(event, user, member);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "banos":
                 Banos.handle(event);
@@ -112,6 +128,15 @@ public class listener extends ListenerAdapter {
             case "memegenerator":
                 Meme.handle(event);
                 break;
+            case "config":
+                try {
+                    ConfigCmd.handle(event);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
         }
     }
 
@@ -131,6 +156,26 @@ public class listener extends ListenerAdapter {
                 break;
             case "delete":
                 Purge.DeleteButton(event);
+        }
+    }
+
+    @Override
+    public void onShutdown(@NotNull ShutdownEvent event) {
+        super.onShutdown(event);
+
+
+    }
+
+    @Override
+    public void onGuildJoin(@NotNull GuildJoinEvent event) {
+        super.onGuildJoin(event);
+
+        try {
+            Config.guildJoin(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
     }
 }
