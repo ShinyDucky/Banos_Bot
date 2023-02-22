@@ -12,10 +12,6 @@ import java.util.Random;
 public class Meme {
     public static void handle(SlashCommandInteractionEvent event) {
         InteractionHook hook = event.getHook();
-/*
-        event.deferReply(true).queue();
-        hook.setEphemeral(true);
-*/
         List<String> images = Arrays.asList(
                 "https://i.imgflip.com/6qx2aj.jpg",
                 "https://i.imgflip.com/6qu2q4.jpg",
