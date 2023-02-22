@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.interactions.InteractionHook;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class Ban {
     public static void SlashBan(SlashCommandInteractionEvent event, User user, Member member) {
@@ -41,7 +42,7 @@ public class Ban {
 
         user.openPrivateChannel().complete().sendMessageEmbeds(builder.build()).queue();
 
-        event.getGuild().ban(user, delDays, reason)
+        event.getGuild().ban(user, delDays, TimeUnit.valueOf(reason))
                 .reason(reason)
                 .flatMap(v -> hook.sendMessage("Banned user " + user.getAsTag() + " by Banos using Ban stone on the Banos Gauntlet :banos_gaunlet:"))
                 .queue();

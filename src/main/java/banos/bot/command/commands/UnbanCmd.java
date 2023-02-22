@@ -10,7 +10,11 @@ import org.slf4j.LoggerFactory;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.List;
+/**
+ * @deprecated All the prefix commands are deprecated in favour of slash commands. {@link banos.bot.api.cmds} to see all the current commands
+ */
 
+@Deprecated
 public class UnbanCmd implements ICommand {
     @Override
     public void handle(CommandContext ctx) {

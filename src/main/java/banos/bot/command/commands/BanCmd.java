@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 import banos.bot.command.CommandContext;
 import banos.bot.command.ICommand;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.function.ObjLongConsumer;
 
+/**
+ * @deprecated All the prefix commands are deprecated in favour of slash commands. {@link banos.bot.api.cmds} to see all the current commands
+ */
+
+@Deprecated
 public class BanCmd implements ICommand {
     private final Logger LOGGER = LoggerFactory.getLogger(BanCmd.class);
 
@@ -64,7 +71,7 @@ public class BanCmd implements ICommand {
                                         .setColor(Color.RED);
         target.getUser().openPrivateChannel().complete().sendMessageEmbeds(builder.build()).queue();
 
-        ctx.getGuild().ban(target, 1, reason).reason(reason).queue(
+        ctx.getGuild().ban(target, 1, TimeUnit.valueOf(reason)).reason(reason).queue(
                 (__) -> channel.sendMessage("User is banned").queue(),
                 (error) -> channel.sendMessageFormat("Could not ban ", error.getMessage()).queue()
         );

@@ -5,7 +5,11 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.List;
+/**
+ * @deprecated All the prefix commands are deprecated in favour of slash commands. {@link banos.bot.api.cmds} to see all the current commands
+ */
 
+@Deprecated
 public record CommandContext(MessageReceivedEvent event,
                              List<String> args) implements ICommandContext {
 

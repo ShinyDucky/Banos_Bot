@@ -1,11 +1,12 @@
 package banos.bot;
 
+import banos.website.Server;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.entities.ChannelType;
+import net.dv8tion.jda.api.entities.channel.ChannelType;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
@@ -17,10 +18,22 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main extends ListenerAdapter {
     public static void main(String[] args) throws LoginException, IOException, InterruptedException {
+//        LocalDateTime date = LocalDateTime.now();
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH-mm-ss--dd-MM-yyyy");
+//        String formatted = dateTimeFormatter.format(date);
+//        File outputFile = new File("./logs/log-" + formatted + ".txt");
+//        outputFile.mkdir();
+//        outputFile.createNewFile();
+//
+        Server.start();
+
         JDA jda = JDABuilder.createDefault(
                         Config.getToken(),
                         GatewayIntent.GUILD_MEMBERS,
@@ -32,7 +45,8 @@ public class Main extends ListenerAdapter {
                         GatewayIntent.MESSAGE_CONTENT,
                         GatewayIntent.DIRECT_MESSAGES,
                         GatewayIntent.DIRECT_MESSAGE_REACTIONS,
-                        GatewayIntent.DIRECT_MESSAGE_TYPING
+                        GatewayIntent.DIRECT_MESSAGE_TYPING,
+                        GatewayIntent.SCHEDULED_EVENTS
                 )
                 .addEventListeners(new listener(), new Main())
                 .setActivity(Activity.watching("you..."))

@@ -5,7 +5,7 @@ import me.duncte123.botcommons.BotCommons;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -64,12 +64,12 @@ public class listener extends ListenerAdapter {
             } else if (raw.equalsIgnoreCase("I hate banos")) {
                 event.getAuthor().openPrivateChannel().complete().sendMessage("Fuck You Bitch").queue();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            return;
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            event.getChannel().sendMessage("Oh No, An error occurred\n" +
+                    "```" + e.getStackTrace() + "```\n\n" +
+                    "Would you like me to invite the dev to help fix it").queue();
+
+            event.getChannel().asTextChannel().createInvite().complete();
         }
     }
 

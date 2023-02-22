@@ -29,7 +29,7 @@ public class Banos {
                 EmbedBuilder creditEmbed = new EmbedBuilder()
                         .setTitle("Bot Credits")
                         .setDescription("This bot is made by <@743218702022869083>. He is a photoshopped version of thanos I made in school.")
-                        .addField("Witnesses to his creation:", "E_Krab and Walson", false)
+                        .addField("Witnesses to his creation:", "E_Krab", false)
                         .setColor(event.getMember().getColor());
 
                 hook.sendMessageEmbeds(creditEmbed.build()).queue();

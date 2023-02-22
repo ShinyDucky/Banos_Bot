@@ -7,6 +7,11 @@ import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.io.FileNotFoundException;
 
+/**
+ * @deprecated All the prefix commands are deprecated in favour of slash commands. {@link banos.bot.api.cmds} to see all the current commands
+ */
+
+@Deprecated
 public class InfoCMD implements ICommand {
     @Override
     public void handle(CommandContext ctx) throws FileNotFoundException {
