@@ -1,5 +1,3 @@
 build
 lib
-*.xml
-/.idea
-/src/main/Test
+/.idea/
