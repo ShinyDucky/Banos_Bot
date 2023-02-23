@@ -4,6 +4,8 @@ plugins {
     id 'application'
 }
 
+apply plugin: 'maven-publish'
+
 group 'banos.bot'
 version '1.1.0-SNAPSHOT'
 
@@ -59,5 +61,20 @@ build.mustRunAfter clean
 jar {
     manifest{
         attributes 'Class-Path': './build/libs/Banos_Bot-1.1.0-SNAPSHOT-all', 'Main-Class': 'banos.bot.Main'
+    }
+}
+
+publishing {
+    publications {
+        customLibrary(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'banos'
+            url = layout.buildDirectory.dir("repo")
+        }
     }
 }
